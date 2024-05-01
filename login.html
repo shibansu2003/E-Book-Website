@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://images.pexels.com/photos/22812011/pexels-photo-22812011/free-photo-of-a-moon-and-clouds-in-the-sky-at-sunset.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'); /* Replace 'background.jpg' with your image path */
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 300px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm" onsubmit="return validateForm()">
+            <input type="text" id="username" name="username" placeholder="Username">
+            <div id="usernameError" class="error"></div>
+            <input type="password" id="password" name="password" placeholder="Password">
+            <div id="passwordError" class="error"></div>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            // Reset error messages
+            document.getElementById("usernameError").innerHTML = "";
+            document.getElementById("passwordError").innerHTML = "";
+
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Validate username
+            if (username.trim() === "") {
+                document.getElementById("usernameError").innerHTML = "Username is required";
+                return false;
+            }
+
+            // Validate password
+            if (password.trim() === "") {
+                document.getElementById("passwordError").innerHTML = "Password is required";
+                return false;
+            }
+
+            // Redirect to index.html after successful login
+            window.location.href = "index.html";
+
+            // Prevent form submission
+            return false;
+        }
+    </script>
+</body>
+</html>
